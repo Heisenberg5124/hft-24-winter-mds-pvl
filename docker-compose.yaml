@@ -1,0 +1,46 @@
+services:
+  frontend_svelte:
+    image: vinhdhde140062/frontend-svelte:lastest
+    networks:
+      - shopnet
+    ports:
+      - "5173:80"
+    environment:
+      - VITE_API_URL=http://backend_express:3000/api
+    depends_on:
+      - backend_express
+  backend_express:
+    image: vinhdhde140062/backend-express:lastest
+    networks:
+      - shopnet
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db_postgres
+    environment:
+      - PORT=3000
+      - POSTGRES_HOST=db_postgres
+      - POSTGRES_USERNAME=vinhdh
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_NAME=shoppingdb
+      - POSTGRES_PORT=5432
+  db_postgres:
+    container_name: db_postgres
+    image: postgres
+    networks:
+      - shopnet
+    environment:
+      POSTGRES_USER: vinhdh
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: shoppingdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+volumes:
+  postgres-data:
+
+networks:
+  shopnet:
+    name: shopnet
