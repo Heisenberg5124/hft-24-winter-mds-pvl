@@ -1,8 +1,9 @@
 import axios from 'axios';
 import type { ShoppingItem } from './types';
+import { env } from 'next-runtime-env';
 
 const api = axios.create({
-    baseURL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000/api', // Replace with your backend IP
+    baseURL: env('NEXT_PUBLIC_API_URL') || 'http://localhost:3000/api', // Replace with your backend IP
     headers: {
         'Content-Type': 'application/json'
     }
