@@ -1,12 +1,12 @@
 services:
-  frontend_next:
-    image: vinhdhde140062/frontend-next:lastest
+  frontend_remix:
+    image: vinhdhde140062/frontend-remix:lastest
     networks:
       - shopnet
     ports:
       - "3000:3000"
     environment:
-      - NEXT_PUBLIC_API_URL=http://backend_express:8080/api
+      - SHOPPING_API_BASE_URL=http://backend_express:8080/api/shoppingItems
     depends_on:
       - backend_express
   backend_express:
