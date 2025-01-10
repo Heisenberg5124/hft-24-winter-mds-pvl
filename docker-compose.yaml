@@ -1,6 +1,6 @@
 services:
   frontend_remix:
-    image: vinhdhde140062/frontend-remix:latest
+    image: vinhdhde140062/frontend_remix:lastest
     networks:
       - shopnet
     ports:
@@ -11,7 +11,7 @@ services:
       - backend_express
   backend_express:
     container_name: backend_express
-    image: vinhdhde140062/backend-express:latest
+    image: vinhdhde140062/backend_express:latest
     networks:
       - shopnet
     ports:
