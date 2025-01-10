@@ -1,6 +1,6 @@
 services:
   frontend_remix:
-    image: vinhdhde140062/frontend_remix:lastest
+    image: vinhdhde140062/frontend_remix:latest
     networks:
       - shopnet
     ports:
